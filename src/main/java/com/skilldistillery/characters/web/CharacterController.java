@@ -37,40 +37,36 @@ public class CharacterController {
 		return "intro"; 
 	}
 	
-	@RequestMapping(path="home.do", method=RequestMethod.GET)
-	public String listCharacters() {
-		return null;
+//	@RequestMapping(path="home.do", method=RequestMethod.GET)
+//	public String listCharacters() {
+//		return null;
+//	}
+	
+	@RequestMapping(path="intro.do", method=RequestMethod.POST)
+	public ModelAndView addCharName(@RequestParam("characterName") String characterName, 
+			@ModelAttribute("characterName") Set<String> name) {
+		ModelAndView mv = new ModelAndView();
+		//Add name/age/gender/position/backstory to map
+		if(name != null) {
+			characterName = characterName.trim();
+			if (characterName.length() > 0) {
+				name.add(characterName);
+			}
+		}
+		mv.setViewName("intro");
+		return mv;
 	}
 	
 	@RequestMapping(path="intro.do", method=RequestMethod.POST)
-	public ModelAndView handleSubmit(@RequestParam("characterName") String characterName, 
-			@ModelAttribute("characterName") Set<String> characterInfo) {
+	public ModelAndView addCharAge(@RequestParam("characterAge") int age, 
+			@ModelAttribute("characterAge") Set<Characters> charAge) {
 		ModelAndView mv = new ModelAndView();
-		//Use name generator
-		if(characterInfo != null) {
-			characterName = characterName.trim();
-			if (name.length() > 0) {
-				StringBuilder translatedName = new StringBuilder();
-				//I have a name. Is it first and last?
-				String[] tokens = name.split("\\s+");
-				if (tokens.length > 1) {
-					//first and last
-					String first = generator.getTranslatedFirstName(tokens[0]);
-					String last = generator.getTranslatedLastName(tokens[1]);
-					translatedName.append(first).append(" ").append(last);
-				} else {
-					//just first
-					String first = generator.getTranslatedFirstName(tokens[0]);
-					String last = generator.getTranslatedLastName(tokens[0]);
-					translatedName.append(first).append(" ").append(last);
-				}
-				String tn = translatedName.toString();
-				mv.addObject("translatedName", tn);
-				namesList.add(tn);
-				mv.addObject("mostRecentName", tn);
+		//Add name/age/gender/position/backstory to map
+		if(age != 0) {
+			charAge.add(age);
 			}
 		}
-		mv.setViewName("WEB-INF/index.jsp");
+		mv.setViewAge("intro");
 		return mv;
 	}
 }
