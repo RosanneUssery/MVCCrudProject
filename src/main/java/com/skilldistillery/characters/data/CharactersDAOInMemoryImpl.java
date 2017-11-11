@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
@@ -15,7 +16,7 @@ public class CharactersDAOInMemoryImpl implements CharactersDAO {
 
 	Map<String, Characters> characters;
 	public CharactersDAOInMemoryImpl() {
-		characters = new HashMap();
+		characters = new TreeMap<>();
 		loadExampleCharacters();
 	}
 
