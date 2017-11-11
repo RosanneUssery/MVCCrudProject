@@ -40,7 +40,7 @@ ${selectCharacter.backstory }
 <div class="container">
 <div class="column">
 <div class="container2">
-<form action="getCharacter.do" method="post" modelAttribute="characterInfo">
+<form action="getCharacter.do" method="post" modelAttribute="id">
 	Your character's name: <br>
 	<input type="text" name="name">
 	<br>
@@ -68,6 +68,24 @@ ${selectCharacter.backstory }
 <div class="container">
 <div class="column">
 <div class="container3">
+	<p>
+	All characters: <br >
+	<c:forEach var="character" items="${characterList}">
+	
+		<a href=" info.do?id=${character.id}">${character.name} </a> <%--  <img src=${gir.imageUrl}/> --%>
+		<form method="post" action="delete.do">
+			<input type="submit" value="Delete">
+			<input type="hidden" name="id" value="${character.id }">
+		</form>
+		<form method="post" action="update.do">
+			<input type="submit" value="Update">
+			<input type="hidden" name="id" value="${character.id }">
+		</form>
+		<br>
+	</c:forEach>
+	</p>
+
+
 </div>
 </div>
 </div>

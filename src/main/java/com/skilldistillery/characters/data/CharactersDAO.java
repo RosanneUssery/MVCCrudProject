@@ -7,7 +7,7 @@ public interface CharactersDAO {
 	
 	Characters addCharacter(Characters c); //Create a character
 	List<Characters> getAllCharacters(); //Retrieve a character
-	Characters getCharacterByName(String name);
+	Characters getCharacterById(int id);
 	Characters updateCharacter(Characters c); //Update a character
 	Characters deleteCharacter(Characters g); //Delete a character
 	
