@@ -1,10 +1,13 @@
 # MVC Crud Project (11/2017)
 
-##Character Tracker Website
+<h2>Character Tracker Website</h2>
+<h4>Rosanne Ussery</h4>
 
 For this project, I used Java, Spring, Gradle, JSP files, HTML and CSS. The project's objectives were to create a CRUD website where the user can view, update, create, and delete information. Lacking a database, the information is stored in sessions and a treemap for the duration of the session. 
 
-The website is intended to be used by writers for tracking and updating character information for their stories. As such, it has forms for basic character information such as name, age, gender, role in the novel and room for a short backstory. ]
+The website is intended to be used by writers for tracking and updating character information for their stories. As such, it has forms for basic character information such as name, age, gender, role in the novel and room for a short backstory.
+
+I found the Spring framework very difficult to understand as it proved challenging to grasp how it connected all of the disparate beans and JSPs together. This contributed to some frustration as I attempted to complete the backend infrastructure for the project. 
 
 Screenshot of my working website
 
@@ -21,14 +24,16 @@ Instructions for using the website are as follows:
 
 Link to my website running on Amazon
 
-Known issues:
-Update page does not return the user to the original page after entering updated information.
+Known issues to fix (11.12.17):
+Update page does not return the user to the original page after entering updated information.<br>
 Names of characters are presenting as links which lead to nowhere.
 
-To do:
-Create a header for the page 
-Add padding around column margins
-Change font color for right hand column
-Add error messages for missing information
-<strike>Create a delete confirm popup for the delete button</strike>
+
+Future Feature sets to add:
+Better interface<br>
+Larger textbox for backstory entry on update page<br>
+Error messages for missing information<br>
+Database to store the information<br>
+Logins for users so they can easily return to their project information<br>
+Functionality for users to create novel sets so they can organize characters by projects<br>
 

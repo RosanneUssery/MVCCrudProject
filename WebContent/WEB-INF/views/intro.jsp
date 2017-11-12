@@ -13,8 +13,15 @@ crossorigin="anonymous">
 </head>
 <body>
 <div class="container">
+<div class="row"> <br>
+</div>
 <div class="row">
-<div class="col-sm-*">
+<div class="col-12">
+<h1>Character Tracker Website</h1>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-3">
 <c:if test="${not empty characterList}">
 <c:forEach items="${characterList}" var="characters">
 ${characters.name}
@@ -26,11 +33,9 @@ ${characters.backstory}<br>
 </c:forEach>
 </c:if>
 
-
-
 </div>
-<div class="col-sm-*">
-<div class="entry">
+<div class="col-sm-3">
+<div class="entryBox">
 <form action="getCharacter.do" method="post" modelAttribute="id">
 	Your character's name: <br>
 	<input type="text" name="name">
@@ -65,7 +70,7 @@ ${characters.backstory}<br>
 </form>
 </div>
 </div>
-<div class="col-sm-*">
+<div class="col-sm-3">
 <div class="updateBoxes">
 	<p>
 	All characters: <br >
