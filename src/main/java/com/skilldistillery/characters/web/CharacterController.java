@@ -38,8 +38,8 @@ public class CharacterController {
 		mv.addObject("characterList", dao.getAllCharacters());
 		mv.setViewName("intro");
 		return mv;
-	}
-
+	}	
+	//gets all the characters from a list and displays them as the homepage
 	@RequestMapping(path="home.do", method=RequestMethod.GET)
 	public ModelAndView home() {
 		ModelAndView mv = new ModelAndView();
@@ -47,7 +47,7 @@ public class CharacterController {
 		mv.setViewName("intro");
 		return mv;
 	}
-
+	//removes a character from the list
 	@RequestMapping("delete.do")
 	public ModelAndView delete(@RequestParam("id") Integer id) {
 		ModelAndView mv = new ModelAndView("deleted"); 
@@ -56,7 +56,7 @@ public class CharacterController {
 		dao.deleteCharacter(change);
 		return mv;
 	}
-
+	//is used to get to the update page
 	@RequestMapping(path="update.do", params="id")
 	public ModelAndView update(@RequestParam("id") Integer id) {
 		ModelAndView mv = new ModelAndView("update"); 
@@ -64,7 +64,8 @@ public class CharacterController {
 		mv.addObject("character", change);
 		return mv;
 	}
-
+	//actually makes the update and returns the user to the homepage
+	//issue: it is not displaying the same homepage as we left. No data is presented.
 	@RequestMapping(path="updateCharacter.do", method=RequestMethod.POST)
 	public ModelAndView doUpdate(Characters characters) {
 		ModelAndView mv = new ModelAndView();

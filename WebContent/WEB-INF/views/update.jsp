@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" 
 integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" 
 crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="introPretty.css">
 <link rel="stylesheet" type="text/css" href="updatePretty.css">
 </head>
 <body>
@@ -22,7 +23,6 @@ crossorigin="anonymous">
 		    <option value="male">Male</option>
 		    <option value="agender">Agender</option>
 		    <option value="Non-gender conforming">Non-gender conforming</option>
-		  </select>
 		</form:select><form:errors path="gender"/>		<br>
 		Role: <form:select path="gender">
 			<option value="protagonist">Protagonist</option>
@@ -31,12 +31,10 @@ crossorigin="anonymous">
 		    <option value="love interest">Love interest</option>
 		    <option value="guide">Guide</option>
 		    <option value="helper">Helper</option>
-		 </select>
 		</form:select><form:errors path="position"/>		<br>
-		<div class="backstory">
-		Backstory: <form:input path="backstory"/>
+		Backstory: 
+		<form:input path="backstory"/>
 		<form:errors path="backstory"/>	<br>
-		</div>
 		<form:hidden path="id"/>
 		<input type="submit" value="Update"/>
 	</form:form>

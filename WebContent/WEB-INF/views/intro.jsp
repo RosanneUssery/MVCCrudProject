@@ -14,8 +14,7 @@ crossorigin="anonymous">
 <body>
 <div class="container">
 <div class="row">
-<div class="column">
-<div class="container1">
+<div class="col-sm-*">
 <c:if test="${not empty characterList}">
 <c:forEach items="${characterList}" var="characters">
 ${characters.name}
@@ -30,11 +29,8 @@ ${characters.backstory}<br>
 
 
 </div>
-</div>
-</div>
-<div class="container">
-<div class="column">
-<div class="container2">
+<div class="col-sm-*">
+<div class="entry">
 <form action="getCharacter.do" method="post" modelAttribute="id">
 	Your character's name: <br>
 	<input type="text" name="name">
@@ -66,15 +62,11 @@ ${characters.backstory}<br>
 	</textarea>
 	<br>
 	<input type="submit" value="Submit your character">
-	
-	
 </form>
 </div>
 </div>
-</div>
-<div class="container">
-<div class="column">
-<div class="container3">
+<div class="col-sm-*">
+<div class="updateBoxes">
 	<p>
 	All characters: <br >
 	<c:forEach var="character" items="${characterList}">
@@ -91,7 +83,6 @@ ${characters.backstory}<br>
 		<br>
 	</c:forEach>
 	</p>
-
 
 </div>
 </div>
