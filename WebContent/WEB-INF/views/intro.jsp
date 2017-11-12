@@ -73,8 +73,9 @@ ${characters.backstory}<br>
 	
 		<a href=" info.do?id=${character.id}">${character.name} </a> <%--  <img src=${gir.imageUrl}/> --%>
 		<form method="post" action="delete.do">
-			<input type="submit" value="Delete">
+			<input type="submit" value="Delete" onclick="return confirm('Are you sure you want to delete?')">
 			<input type="hidden" name="id" value="${character.id }">
+			
 		</form>
 		<form method="post" action="update.do">
 			<input type="submit" value="Update">
