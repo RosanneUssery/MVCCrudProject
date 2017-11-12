@@ -21,18 +21,13 @@ crossorigin="anonymous">
 ${characters.name}
 ${characters.age}
 ${characters.gender}
-${characters.position}
-${characters.backstory}
+${characters.position}<br>
+${characters.backstory}<br>
+<br>
 </c:forEach>
 </c:if>
 
-<c:if test="${not empty selectCharacter }">
-${selectCharacter.name }
-${selectCharacter.age }
-${selectCharacter.gender }
-${selectCharacter.position }
-${selectCharacter.backstory }
-</c:if>
+
 
 </div>
 </div>
@@ -48,10 +43,22 @@ ${selectCharacter.backstory }
 	<input type="number" name="age">
 	<br>
 	Their gender: <br>
-	<input type="text" name="gender">
+	<select name="gender">
+    <option value="female">Female</option>
+    <option value="male">Male</option>
+    <option value="agender">Agender</option>
+    <option value="Non-gender conforming">Non-gender conforming</option>
+  </select>
 	<br>
 	Their role in the novel: <br>
-	<input type="text" name="position">
+	<select name="position">
+    <option value="protagonist">Protagonist</option>
+    <option value="antagonist">Antagonist</option>
+    <option value="sidekick">Sidekick</option>
+    <option value="love interest">Love interest</option>
+    <option value="guide">Guide</option>
+    <option value="helper">Helper</option>
+    </select>
 	<br>
 	A short backstory: <br>
 	<textarea type="text" name="backstory" rows="10" columns="1" 

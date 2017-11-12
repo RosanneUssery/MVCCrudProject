@@ -6,16 +6,40 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Enter Character data</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" 
+integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" 
+crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="updatePretty.css">
 </head>
 <body>
+<div class="container">
 	<h3>Update your Character</h3>
 	<form:form action="updateCharacter.do" method="post" modelAttribute="character">
 		Name	:	<form:input path="name"/><form:errors path="name"/>	<br>
 		Age:	 <form:input path="age"/>	<form:errors path="age"/>	<br>
-		Gender: <form:input path="gender"/><form:errors path="gender"/>		<br>
+		Gender: <form:select path="gender">
+		    <option value="female">Female</option>
+		    <option value="male">Male</option>
+		    <option value="agender">Agender</option>
+		    <option value="Non-gender conforming">Non-gender conforming</option>
+		  </select>
+		</form:select><form:errors path="gender"/>		<br>
+		Role: <form:select path="gender">
+			<option value="protagonist">Protagonist</option>
+		    <option value="antagonist">Antagonist</option>
+		    <option value="sidekick">Sidekick</option>
+		    <option value="love interest">Love interest</option>
+		    <option value="guide">Guide</option>
+		    <option value="helper">Helper</option>
+		 </select>
+		</form:select><form:errors path="position"/>		<br>
+		<div class="backstory">
+		Backstory: <form:input path="backstory"/>
+		<form:errors path="backstory"/>	<br>
+		</div>
 		<form:hidden path="id"/>
-
 		<input type="submit" value="Update"/>
 	</form:form>
+</div>
 </body>
 </html>
