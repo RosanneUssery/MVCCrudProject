@@ -9,7 +9,7 @@ The website is intended to be used by writers for tracking and updating characte
 
 I found the Spring framework very difficult to understand as it proved challenging to grasp how it connected all of the disparate beans and JSPs together. This contributed to some frustration as I attempted to complete the backend infrastructure for the project. 
 
-Screenshot of my working website
+<img src="WebContent/CharacterScreenshot.png">
 
 In order to use the website, load the page and determine which information you would like to enter for your character. 
 

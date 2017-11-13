@@ -70,6 +70,7 @@ public class CharacterController {
 	public ModelAndView doUpdate(Characters characters) {
 		ModelAndView mv = new ModelAndView();
 		dao.updateCharacter(characters);
+		mv.addObject("characterList", dao.getAllCharacters());
 		mv.setViewName("intro");
 		return mv;
 	}
