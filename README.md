@@ -25,7 +25,6 @@ Instructions for using the website are as follows:
 Link to my website running on Amazon
 
 Known issues to fix (11.12.17):
-Update page does not return the user to the original page after entering updated information.<br>
 Names of characters are presenting as links which lead to nowhere.
 
 
