@@ -49,6 +49,7 @@ ${characters.backstory}<br>
     <option value="male">Male</option>
     <option value="agender">Agender</option>
     <option value="Non-gender conforming">Non-gender conforming</option>
+    <option value="other">Other</option>
   </select>
 	<br>
 	Their role in the novel: <br>

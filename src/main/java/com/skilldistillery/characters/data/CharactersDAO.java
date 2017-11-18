@@ -1,5 +1,6 @@
 package com.skilldistillery.characters.data;
 
+import java.sql.SQLException;
 import java.util.List;
 
 
@@ -9,6 +10,6 @@ public interface CharactersDAO {
 	List<Characters> getAllCharacters(); //Retrieve a character
 	Characters getCharacterById(int id);
 	Characters updateCharacter(Characters c); //Update a character
-	Characters deleteCharacter(Characters g); //Delete a character
+	boolean deleteCharacter(Characters g) throws SQLException; //Delete a character
 	
 }

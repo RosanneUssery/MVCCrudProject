@@ -5,7 +5,7 @@ public class Characters {
 	private String name;
 	private int age;
 	private String gender; //make this a dropdown list if there's time
-	private String position; //make this a dropdown list if there's time
+	private String role; //make this a dropdown list if there's time
 	private String backstory;
 	
 	
@@ -15,13 +15,13 @@ public class Characters {
 
 
 
-	public Characters(int id, String name, int age, String gender, String position, String backstory) {
+	public Characters(int id, String name, int age, String gender, String role, String backstory) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.age = age;
 		this.gender = gender;
-		this.position = position;
+		this.role = role;
 		this.backstory = backstory;
 	}
 	
@@ -59,12 +59,12 @@ public class Characters {
 		this.gender = gender;
 	}
 
-	public String getPosition() {
-		return position;
+	public String getRole() {
+		return role;
 	}
 
-	public void setPosition(String position) {
-		this.position = position;
+	public void setRole(String role) {
+		this.role = role;
 	}
 
 	public String getBackstory() {
@@ -77,7 +77,7 @@ public class Characters {
 
 	@Override
 	public String toString() {
-		return "Characters [name=" + name + ", age=" + age + ", gender=" + gender + ", position=" + position
+		return "Characters [name=" + name + ", age=" + age + ", gender=" + gender + ", position=" + role
 				+ ", backstory=" + backstory + "]";
 	}
 
@@ -92,7 +92,7 @@ public class Characters {
 		result = prime * result + ((gender == null) ? 0 : gender.hashCode());
 		result = prime * result + id;
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result + ((position == null) ? 0 : position.hashCode());
+		result = prime * result + ((role == null) ? 0 : role.hashCode());
 		return result;
 	}
 
@@ -126,10 +126,10 @@ public class Characters {
 				return false;
 		} else if (!name.equals(other.name))
 			return false;
-		if (position == null) {
-			if (other.position != null)
+		if (role == null) {
+			if (other.role != null)
 				return false;
-		} else if (!position.equals(other.position))
+		} else if (!role.equals(other.role))
 			return false;
 		return true;
 	}
