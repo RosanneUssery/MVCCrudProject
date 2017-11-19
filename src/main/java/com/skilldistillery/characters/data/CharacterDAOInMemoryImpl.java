@@ -16,56 +16,10 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class CharacterDAOInMemoryImpl implements CharactersDAO{
 
-	private static String url = "jdbc:mysql://localhost:3306/characterDB";
+	private static String url = "jdbc:mysql://localhost:3306/characterdb";
 	private String user = "author";
 	private String pass = "author";
-//changed string to id in gender/role to get the errors to go away, not sure if it works as a fix
-	private String getCharacterGenderIdByName(String id) {
-		try {
-			Connection conn = DriverManager.getConnection(url, user, pass);
 
-			String sql = "SELECT gender FROM gender WHERE id = ?";
-			PreparedStatement stmt = conn.prepareStatement(sql);
-			stmt.setString(1, id);
-			ResultSet rs = stmt.executeQuery();
-			if (rs.next()) {
-				id = rs.getString(1);
-			}
-			rs.close();
-			stmt.close();
-			conn.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		//SELECT id FROM pokemon type WHERE name =?
-		//statement.setString(1, typeName);
-		return id;
-		
-	}
-	
-	private String getCharacterRoleIdByName(String id) {
-		try {
-			Connection conn = DriverManager.getConnection(url, user, pass);
-
-			String sql = "SELECT role FROM role WHERE id = ?";
-			PreparedStatement stmt = conn.prepareStatement(sql);
-			stmt.setString(1, id);
-			ResultSet rs = stmt.executeQuery();
-			if (rs.next()) {
-				id = rs.getString(1);
-			}
-			rs.close();
-			stmt.close();
-			conn.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		//SELECT id FROM pokemon type WHERE name =?
-		//statement.setString(1, typeName);
-		return id;
-	}
-	
-	
 	public CharacterDAOInMemoryImpl() {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
@@ -74,7 +28,7 @@ public class CharacterDAOInMemoryImpl implements CharactersDAO{
 			System.err.println("Error loading MySQL Driver!!!");
 		}
 	}
-
+	
 	@Override
 	public Characters getCharacterById(int id) {
 		Characters character = null;
@@ -208,10 +162,7 @@ public class CharacterDAOInMemoryImpl implements CharactersDAO{
 
 	@Override
 	public List<Characters> getAllCharacters(int id) {
-		
 		List <Characters> list = new ArrayList<>();
-		
-		
 		Characters character = null;
 		try {
 			Connection conn = DriverManager.getConnection(url, user, pass);
@@ -238,6 +189,54 @@ public class CharacterDAOInMemoryImpl implements CharactersDAO{
 		}
 		return list;
 	}
+	
+	//changed string to id in gender/role to get the errors to go away, not sure if it works as a fix
+	private String getCharacterGenderIdByName(String id) {
+		try {
+			Connection conn = DriverManager.getConnection(url, user, pass);
+			
+			String sql = "SELECT gender FROM gender WHERE id = ?";
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			stmt.setString(1, id);
+			ResultSet rs = stmt.executeQuery();
+			if (rs.next()) {
+				id = rs.getString(1);
+			}
+			rs.close();
+			stmt.close();
+			conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		//SELECT id FROM pokemon type WHERE name =?
+		//statement.setString(1, typeName);
+		return id;
+		
+	}
+	
+	private String getCharacterRoleIdByName(String id) {
+		try {
+			Connection conn = DriverManager.getConnection(url, user, pass);
+			
+			String sql = "SELECT role FROM role WHERE id = ?";
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			stmt.setString(1, id);
+			ResultSet rs = stmt.executeQuery();
+			if (rs.next()) {
+				id = rs.getString(1);
+			}
+			rs.close();
+			stmt.close();
+			conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		//SELECT id FROM pokemon type WHERE name =?
+		//statement.setString(1, typeName);
+		return id;
+	}
+	
+
 
 }
 

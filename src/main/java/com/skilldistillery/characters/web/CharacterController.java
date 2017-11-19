@@ -33,19 +33,13 @@ public class CharacterController {
 		return new Characters();
 	}
 	
-	
-//	@RequestMapping(path = "home.do")
-//	public ModelAndView home() {
-//		return new ModelAndView("intro");
-//	}
-	
 	@RequestMapping(path = "home.do")
 	public ModelAndView getAllCharacters(@RequestParam(name = "id") int id){
 		String viewName = "intro";
 		ModelAndView mv = new ModelAndView(viewName);
 		List<Characters> characters= dao.getAllCharacters(id);
 		mv.addObject("characters", characters);
-		return  mv;
+		return mv;
 	}
 	
 	@RequestMapping(path = "getCharacter.do", method = RequestMethod.GET)
