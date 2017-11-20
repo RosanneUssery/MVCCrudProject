@@ -63,14 +63,18 @@ public class CharacterDAOInMemoryImpl implements CharactersDAO{
 		String sql = "INSERT INTO characters (char_name, age, gender_id, role_id, backstory) "
 				+ " VALUES (?, ?, ?, ?, ?)";
 		Connection conn = null;
+		System.out.println("gender id" + newCharacter.getGender());
 		try {
 			conn = DriverManager.getConnection(url, user, pass);
 			conn.setAutoCommit(false);
 			PreparedStatement st = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 			st.setString(1, newCharacter.getName());
 			st.setInt(2, newCharacter.getAge());
-			st.setString(3, this.getCharacterGenderIdByName(newCharacter.getGender()));
-			st.setString(4, this.getCharacterRoleIdByName(newCharacter.getRole()));
+			st.setInt(3, 1);
+//			st.setInt(3, this.getCharacterGenderIdByName(newCharacter.getGender()));
+			System.out.println("Role:" +  newCharacter.getRole());
+			st.setInt(4,1);
+//			st.setInt(4, this.getCharacterRoleIdByName(newCharacter.getRole()));
 //			st.setString(3, newCharacter.getGender()); //need id number for gender
 //			st.setString(4, newCharacter.getRole());	//need id number for role -- Use the top method to pull ids
 			
@@ -80,12 +84,12 @@ public class CharacterDAOInMemoryImpl implements CharactersDAO{
 
 			int uc = st.executeUpdate();
 			if (uc == 1) {
+				System.out.println("insert successful");
 				ResultSet keys = st.getGeneratedKeys();
 				if (keys.next()) {
 					int charId = keys.getInt(1);
 					conn.commit();
 					newCharacter.setId(charId);
-					
 				}
 			}
 			st.close();
@@ -167,7 +171,7 @@ public class CharacterDAOInMemoryImpl implements CharactersDAO{
 		try {
 			Connection conn = DriverManager.getConnection(url, user, pass);
 
-			String sql = "SELECT id, char_name, age, gender_id, role_id, backstory FROM characters; WHERE id = ?";
+			String sql = "SELECT id, char_name, age, gender_id, role_id, backstory FROM characters WHERE id = ?";
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, id);
 			ResultSet rs = stmt.executeQuery();
@@ -191,16 +195,16 @@ public class CharacterDAOInMemoryImpl implements CharactersDAO{
 	}
 	
 	//changed string to id in gender/role to get the errors to go away, not sure if it works as a fix
-	private String getCharacterGenderIdByName(String id) {
+	private int getCharacterGenderIdByName(String gender) {
+		int id = 0;
 		try {
 			Connection conn = DriverManager.getConnection(url, user, pass);
-			
-			String sql = "SELECT gender FROM gender WHERE id = ?";
+			String sql = "SELECT g.id FROM gender g WHERE g.name = ?";
 			PreparedStatement stmt = conn.prepareStatement(sql);
-			stmt.setString(1, id);
+			stmt.setString(1, gender);
 			ResultSet rs = stmt.executeQuery();
 			if (rs.next()) {
-				id = rs.getString(1);
+				id = rs.getInt(1);
 			}
 			rs.close();
 			stmt.close();
@@ -214,16 +218,17 @@ public class CharacterDAOInMemoryImpl implements CharactersDAO{
 		
 	}
 	
-	private String getCharacterRoleIdByName(String id) {
+	private int getCharacterRoleIdByName(String role) {
+		int id = 0;
 		try {
 			Connection conn = DriverManager.getConnection(url, user, pass);
 			
-			String sql = "SELECT role FROM role WHERE id = ?";
+			String sql = "SELECT id FROM role WHERE name = ?";
 			PreparedStatement stmt = conn.prepareStatement(sql);
-			stmt.setString(1, id);
+			stmt.setString(1, role);
 			ResultSet rs = stmt.executeQuery();
 			if (rs.next()) {
-				id = rs.getString(1);
+				id = rs.getInt(1);
 			}
 			rs.close();
 			stmt.close();

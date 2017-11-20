@@ -13,6 +13,7 @@
 <link rel="stylesheet" type="text/css" href="introPretty.css">
 </head>
 <body>
+Hello world!
 	<div class="container">
 		<div class="row">
 			<br>
@@ -25,14 +26,14 @@
 		<div class="row">
 			<div class="col-sm-3">
 				<c:if test="${not empty characterList}">
-					<c:forEach items="${characterList}" var="id" action="getViews.do">
+					<%-- <c:forEach items="${characterList}" var="id" action="home.do"> --%>
 								${characters.name}
 								${characters.age}
 								${characters.gender}
 								${characters.position}<br>
 								${characters.backstory}<br>
 						<br>
-					</c:forEach>
+					<%-- </c:forEach> --%>
 				</c:if>
 
 			</div>
@@ -42,20 +43,20 @@
 						Your character's name: <br> <input type="text" name="name">
 						<br> Their age: <br> <input type="number" name="age">
 						<br> Their gender: <br> <select name="gender">
-							<option value="female">Female</option>
-							<option value="male">Male</option>
-							<option value="agender">Agender</option>
-							<option value="Non-gender conforming">Non-gender
+							<option value="1">Female</option>
+							<option value="2">Male</option>
+							<option value="3">Agender</option>
+							<option value="4">Non-gender
 								conforming</option>
-							<option value="other">Other</option>
+							<option value="5">Other</option>
 						</select> <br> Their role in the novel: <br> <select
 							name="position">
-							<option value="protagonist">Protagonist</option>
-							<option value="antagonist">Antagonist</option>
-							<option value="sidekick">Sidekick</option>
-							<option value="love interest">Love interest</option>
-							<option value="guide">Guide</option>
-							<option value="helper">Helper</option>
+							<option value="1">Protagonist</option>
+							<option value="2">Antagonist</option>
+							<option value="3">Sidekick</option>
+							<option value="4">Love interest</option>
+							<option value="5">Guide</option>
+							<option value="6">Helper</option>
 						</select> <br> A short backstory: <br>
 						<textarea type="text" name="backstory" rows="10" columns="1"
 							placeholder="Enter a short backstory for your character">

@@ -33,7 +33,7 @@ public class CharacterController {
 		return new Characters();
 	}
 	
-	@RequestMapping(path = "getViews.do")
+	@RequestMapping(path = "home.do")
 	public ModelAndView getAllCharacters(Integer id){
 		//need to set id to something
 		id = 1;
