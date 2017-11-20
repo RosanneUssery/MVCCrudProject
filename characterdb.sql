@@ -21,9 +21,10 @@ USE `characterDB` ;
 DROP TABLE IF EXISTS `gender` ;
 
 CREATE TABLE IF NOT EXISTS `gender` (
-  `1` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(45) NULL,
-  PRIMARY KEY (`1`))
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `gender` VARCHAR(45) NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `name_UNIQUE` (`gender` ASC))
 ENGINE = InnoDB;
 
 
@@ -34,8 +35,9 @@ DROP TABLE IF EXISTS `role` ;
 
 CREATE TABLE IF NOT EXISTS `role` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`id`))
+  `role` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `name_UNIQUE` (`role` ASC))
 ENGINE = InnoDB;
 
 
@@ -46,7 +48,7 @@ DROP TABLE IF EXISTS `characters` ;
 
 CREATE TABLE IF NOT EXISTS `characters` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(300) NOT NULL,
+  `char_name` VARCHAR(300) NOT NULL,
   `age` INT UNSIGNED NULL,
   `gender_id` INT NULL,
   `role_id` INT NULL,
@@ -56,7 +58,7 @@ CREATE TABLE IF NOT EXISTS `characters` (
   INDEX `fk_character_role_idx` (`role_id` ASC),
   CONSTRAINT `fk_character_gender`
     FOREIGN KEY (`gender_id`)
-    REFERENCES `gender` (`1`)
+    REFERENCES `gender` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_character_role`
@@ -83,11 +85,11 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `characterDB`;
-INSERT INTO `gender` (`1`, `name`) VALUES (1, 'male');
-INSERT INTO `gender` (`1`, `name`) VALUES (2, 'female');
-INSERT INTO `gender` (`1`, `name`) VALUES (3, 'agender');
-INSERT INTO `gender` (`1`, `name`) VALUES (4, 'non-gender conforming');
-INSERT INTO `gender` (`1`, `name`) VALUES (5, 'other');
+INSERT INTO `gender` (`id`, `gender`) VALUES (1, 'male');
+INSERT INTO `gender` (`id`, `gender`) VALUES (2, 'female');
+INSERT INTO `gender` (`id`, `gender`) VALUES (3, 'agender');
+INSERT INTO `gender` (`id`, `gender`) VALUES (4, 'non-gender conforming');
+INSERT INTO `gender` (`id`, `gender`) VALUES (5, 'other');
 
 COMMIT;
 
@@ -97,12 +99,12 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `characterDB`;
-INSERT INTO `role` (`id`, `name`) VALUES (1, 'protagonist');
-INSERT INTO `role` (`id`, `name`) VALUES (2, 'antagonist');
-INSERT INTO `role` (`id`, `name`) VALUES (3, 'sidekick');
-INSERT INTO `role` (`id`, `name`) VALUES (4, 'love interest');
-INSERT INTO `role` (`id`, `name`) VALUES (5, 'guide');
-INSERT INTO `role` (`id`, `name`) VALUES (6, 'helper');
+INSERT INTO `role` (`id`, `role`) VALUES (1, 'protagonist');
+INSERT INTO `role` (`id`, `role`) VALUES (2, 'antagonist');
+INSERT INTO `role` (`id`, `role`) VALUES (3, 'sidekick');
+INSERT INTO `role` (`id`, `role`) VALUES (4, 'love interest');
+INSERT INTO `role` (`id`, `role`) VALUES (5, 'guide');
+INSERT INTO `role` (`id`, `role`) VALUES (6, 'helper');
 
 COMMIT;
 
@@ -112,6 +114,6 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `characterDB`;
-INSERT INTO `characters` (`id`, `name`, `age`, `gender_id`, `role_id`, `backstory`) VALUES (1, 'Jon', 22, 1, 1, 'They have one and it\'s surprisingly cool');
+INSERT INTO `characters` (`id`, `char_name`, `age`, `gender_id`, `role_id`, `backstory`) VALUES (1, 'Jon', 22, 1, 1, 'They have one and it\'s surprisingly cool');
 
 COMMIT;

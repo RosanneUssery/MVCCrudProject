@@ -33,9 +33,11 @@ public class CharacterController {
 		return new Characters();
 	}
 	
-	@RequestMapping(path = "home.do")
-	public ModelAndView getAllCharacters(@ModelAttribute("id") int id){
-		String viewName = "WEB-INF/views/intro";
+	@RequestMapping(path = "getViews.do")
+	public ModelAndView getAllCharacters(Integer id){
+		//need to set id to something
+		id = 1;
+		String viewName = "intro";
 		ModelAndView mv = new ModelAndView(viewName);
 		List<Characters> characters= dao.getAllCharacters(id);
 		mv.addObject("characters", characters);
@@ -46,19 +48,19 @@ public class CharacterController {
 	public String addCharacter(Model m) {
 		Characters newCharacter = new Characters();
 		m.addAttribute("character", newCharacter);
-		return "WEB-INF/views/intro";
+		return "intro";
 	}
 
 	@RequestMapping(path = "getCharacter.do", method = RequestMethod.POST)
 	public ModelAndView doAdd(@Valid Characters id, Errors error) {
 		ModelAndView mv = new ModelAndView();
 		if (error.hasErrors()) {
-			mv.setViewName("WEB-INF/views/intro");
+			mv.setViewName("intro");
 			return mv;
 		}
 		Characters c = dao.addCharacter(id);
 		mv.addObject("character", c);
-		mv.setViewName("WEB-INF/views/intro");
+		mv.setViewName("intro");
 		return mv;
 	}
 	
@@ -68,7 +70,7 @@ public class CharacterController {
 		Characters change = dao.getCharacterById(id);
 		mv.addObject("id", change.getId());
 		dao.deleteCharacter(change);
-		mv.setViewName("WEB-INF/views/intro");
+		mv.setViewName("intro");
 		return mv;
 	}
 	
@@ -78,7 +80,7 @@ public class CharacterController {
 		ModelAndView mv = new ModelAndView(); 
 		Characters change = dao.getCharacterById(id);
 		mv.addObject("character", change);
-		mv.setViewName("WEB-INF/views/update");
+		mv.setViewName("update");
 		return mv;
 	}
 	//actually makes the update and returns the user to the homepage
@@ -88,7 +90,7 @@ public class CharacterController {
 		ModelAndView mv = new ModelAndView();
 		Characters c = dao.updateCharacter(characters);
 		mv.addObject("characterList", c);
-		mv.setViewName("WEB-INF/views/intro");
+		mv.setViewName("intro");
 		return mv;
 	}
 
