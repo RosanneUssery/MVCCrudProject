@@ -34,12 +34,11 @@ public class CharacterController {
 	}
 	
 	@RequestMapping(path = "home.do")
-	public ModelAndView getAllCharacters(Integer id){
+	public ModelAndView getAllCharacters(){
 		//need to set id to something
-		id = 1;
 		String viewName = "intro";
 		ModelAndView mv = new ModelAndView(viewName);
-		List<Characters> characters= dao.getAllCharacters(id);
+		List<Characters> characters= dao.getAllCharacters();
 		mv.addObject("characters", characters);
 		return mv;
 	}
@@ -48,7 +47,7 @@ public class CharacterController {
 	public String addCharacter(Model m) {
 		Characters newCharacter = new Characters();
 		m.addAttribute("character", newCharacter);
-		return "intro";
+		return "insert";
 	}
 
 	@RequestMapping(path = "getCharacter.do", method = RequestMethod.POST)
@@ -58,8 +57,9 @@ public class CharacterController {
 			mv.setViewName("intro");
 			return mv;
 		}
-		Characters c = dao.addCharacter(id);
-		mv.addObject("character", c);
+		dao.addCharacter(id);
+		List<Characters> d = dao.getAllCharacters();
+		mv.addObject("characters", d);
 		mv.setViewName("intro");
 		return mv;
 	}
@@ -67,9 +67,13 @@ public class CharacterController {
 	@RequestMapping("delete.do")
 	public ModelAndView delete(@RequestParam("id") Integer id) throws SQLException {
 		ModelAndView mv = new ModelAndView("deleted"); 
-		Characters change = dao.getCharacterById(id);
-		mv.addObject("id", change.getId());
-		dao.deleteCharacter(change);
+//		Characters change = dao.getCharacterById(id);
+//		System.out.println("my id is " + id);
+//		mv.addObject("id", change.getId());
+//		System.out.println("my change is " + change);
+		dao.deleteCharacter(id);
+		List<Characters> d = dao.getAllCharacters();
+		mv.addObject("characters", d);
 		mv.setViewName("intro");
 		return mv;
 	}

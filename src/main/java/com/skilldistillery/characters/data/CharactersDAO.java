@@ -7,9 +7,9 @@ import java.util.List;
 public interface CharactersDAO {
 	
 	Characters addCharacter(Characters c); //Create a character
-	List<Characters> getAllCharacters(int id); //Retrieve a character
+	List<Characters> getAllCharacters(); //Retrieve a character
 	Characters getCharacterById(int id);
 	Characters updateCharacter(Characters c); //Update a character
-	boolean deleteCharacter(Characters g) throws SQLException; //Delete a character
+	boolean deleteCharacter(int id) throws SQLException; //Delete a character
 	
 }

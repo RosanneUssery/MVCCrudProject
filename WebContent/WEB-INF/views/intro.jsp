@@ -13,7 +13,6 @@
 <link rel="stylesheet" type="text/css" href="introPretty.css">
 </head>
 <body>
-Hello world!
 	<div class="container">
 		<div class="row">
 			<br>
@@ -25,15 +24,15 @@ Hello world!
 		</div>
 		<div class="row">
 			<div class="col-sm-3">
-				<c:if test="${not empty characterList}">
-					<%-- <c:forEach items="${characterList}" var="id" action="home.do"> --%>
-								${characters.name}
-								${characters.age}
-								${characters.gender}
-								${characters.position}<br>
-								${characters.backstory}<br>
+				<c:if test="${not empty characters}">
+					 <c:forEach items="${characters}" var="x"> 
+								${x.name}
+								${x.age}
+								${x.gender}
+								${x.role}</br>
+								${x.backstory}<br>
 						<br>
-					<%-- </c:forEach> --%>
+				 </c:forEach>
 				</c:if>
 
 			</div>
@@ -43,20 +42,20 @@ Hello world!
 						Your character's name: <br> <input type="text" name="name">
 						<br> Their age: <br> <input type="number" name="age">
 						<br> Their gender: <br> <select name="gender">
-							<option value="1">Female</option>
-							<option value="2">Male</option>
-							<option value="3">Agender</option>
-							<option value="4">Non-gender
+							<option value="female">Female</option>
+							<option value="male">Male</option>
+							<option value="agender">Agender</option>
+							<option value="non-gender-conforming">Non-gender
 								conforming</option>
-							<option value="5">Other</option>
+							<option value="other">Other</option>
 						</select> <br> Their role in the novel: <br> <select
 							name="position">
-							<option value="1">Protagonist</option>
-							<option value="2">Antagonist</option>
-							<option value="3">Sidekick</option>
-							<option value="4">Love interest</option>
-							<option value="5">Guide</option>
-							<option value="6">Helper</option>
+							<option value="protagonist">Protagonist</option>
+							<option value="antagonist">Antagonist</option>
+							<option value="sidekick">Sidekick</option>
+							<option value="love interest">Love interest</option>
+							<option value="guide">Guide</option>
+							<option value="helper">Helper</option>
 						</select> <br> A short backstory: <br>
 						<textarea type="text" name="backstory" rows="10" columns="1"
 							placeholder="Enter a short backstory for your character">
@@ -69,7 +68,7 @@ Hello world!
 				<div class="updateBoxes">
 					<p>
 						All characters: <br>
-						<c:forEach var="character" items="${characterList}">
+						<c:forEach var="character" items="${characters}">
 
 							<a href=" info.do?id=${character.id}">${character.name} </a>
 							<%--  <img src=${gir.imageUrl}/> --%>
