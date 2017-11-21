@@ -67,7 +67,7 @@ public class CharacterController {
 	
 	//is used to get to the update page
 	@RequestMapping(path="update.do", params="id")
-	public ModelAndView update( Integer id) {
+	public ModelAndView update(@RequestParam("id") Integer id) {
 		ModelAndView mv = new ModelAndView(); 
 		Characters change = dao.getCharacterById(id);
 		mv.addObject("character", change);
@@ -75,6 +75,8 @@ public class CharacterController {
 		return mv;
 	}
 	//actually makes the update and returns the user to the homepage
+	//isn't updating the character in question, likely because it's
+	//not pulling the id correctly, or at all.
 	@RequestMapping(path="updateCharacter.do", method=RequestMethod.POST)
 	public ModelAndView doUpdate(Characters characters) {
 		ModelAndView mv = new ModelAndView();
@@ -88,10 +90,6 @@ public class CharacterController {
 	@RequestMapping("delete.do")
 	public ModelAndView delete(@RequestParam("id") Integer id) throws SQLException {
 		ModelAndView mv = new ModelAndView("deleted"); 
-//		Characters change = dao.getCharacterById(id);
-//		System.out.println("my id is " + id);
-//		mv.addObject("id", change.getId());
-//		System.out.println("my change is " + change);
 		dao.deleteCharacter(id);
 		List<Characters> d = dao.getAllCharacters();
 		mv.addObject("characters", d);

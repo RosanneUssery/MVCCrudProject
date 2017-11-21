@@ -7,7 +7,7 @@ For this project, I used Java, Spring, Gradle, JSP files, HTML and CSS. The proj
 
 The website is intended to be used by writers for tracking and updating character information for their stories. As such, it has forms for basic character information such as name, age, gender, role in the novel and room for a short backstory.
 
-As of 11/19/17, the program is still returning errors. Prior to today, the spring interface was not pulling from the database. Now, after fixing that issue, it is returning a HTTP Status 400 - Required int parameter 'id' is not present error. I am unsure how to fix that error, but I will continue to investigate. 
+As of 11/21/17, the program is no longer returing errors. However, the update functionality is still broken. When compared to similar programs, there is no discernible difference between this program and those. I will continue to investigate. 
 
 <img src="WebContent/CharacterScreenshot.png">
 
@@ -22,7 +22,7 @@ Instructions for using the website are as follows:
 * Any character can be deleted from the website. Be sure you intend to do this before clicking the button as the decision is irreversible. 
 
 Known issues to fix (11.19.17):
-Webpage doesn't load and throws a 400 error.
+Update does not update the database/character.
 
 
 Future Feature sets to add:
