@@ -136,25 +136,28 @@ public class CharacterDAOInMemoryImpl implements CharactersDAO{
 		try {
 			conn = DriverManager.getConnection(url, user, pass);
 			conn.setAutoCommit(false);
-			PreparedStatement st = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+			PreparedStatement st = conn.prepareStatement(sql);
 			st.setString(1, newCharacter.getName());
 			st.setInt(2, newCharacter.getAge());
-//			st.setString(3, newCharacter.getGender());
-//			st.setString(4, newCharacter.getRole());
+			st.setString(3, newCharacter.getGender());
+			st.setString(4, newCharacter.getRole());
 			st.setString(5, newCharacter.getBackstory());
 			// trying to get it to add to the list, so far no luck
 			int uc = st.executeUpdate();
 			if (uc == 1) {
-				ResultSet keys = st.getGeneratedKeys();
-				if (keys.next()) {
-					int charId = keys.getInt(1);
-					newCharacter.setId(charId);
-				}
+				returnCharacter = newCharacter;
+//				ResultSet keys = st.getGeneratedKeys();
+//				if (keys.next()) {
+//					int charId = keys.getInt(1);
+//					newCharacter.setId(charId);
+//				}
+			}
+			else {
+				returnCharacter= null;
 			}
 			conn.commit();
 			st.close();
 			conn.close();
-			returnCharacter = newCharacter;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

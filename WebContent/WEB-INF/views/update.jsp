@@ -14,8 +14,8 @@ crossorigin="anonymous">
 </head>
 <body>
 <div class="container">
-	<h3>Update your Character</h3>
-	<form:form action="updateCharacter.do" method="post" modelAttribute="character">
+	<h3>Update Your Character</h3>
+	<form:form action="updateCharacter.do" method="post" modelAttribute="selectCharacter">
 		Name	:	<form:input path="name"/><form:errors path="name"/>	<br>
 		Age:	 <form:input path="age"/>	<form:errors path="age"/>	<br>
 		Gender: <form:select path="gender">
@@ -24,7 +24,7 @@ crossorigin="anonymous">
 		    <option value="agender">Agender</option>
 		    <option value="Non-gender conforming">Non-gender conforming</option>
 		</form:select><form:errors path="gender"/>		<br>
-		Role: <form:select path="role">
+		Role: <form:select path="gender">
 			<option value="protagonist">Protagonist</option>
 		    <option value="antagonist">Antagonist</option>
 		    <option value="sidekick">Sidekick</option>

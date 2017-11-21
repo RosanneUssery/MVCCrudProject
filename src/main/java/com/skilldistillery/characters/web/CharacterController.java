@@ -64,6 +64,27 @@ public class CharacterController {
 		return mv;
 	}
 	
+	
+	//is used to get to the update page
+	@RequestMapping(path="update.do", params="id")
+	public ModelAndView update( Integer id) {
+		ModelAndView mv = new ModelAndView(); 
+		Characters change = dao.getCharacterById(id);
+		mv.addObject("character", change);
+		mv.setViewName("update");
+		return mv;
+	}
+	//actually makes the update and returns the user to the homepage
+	@RequestMapping(path="updateCharacter.do", method=RequestMethod.POST)
+	public ModelAndView doUpdate(Characters characters) {
+		ModelAndView mv = new ModelAndView();
+		dao.updateCharacter(characters);
+		List<Characters> d = dao.getAllCharacters();
+		mv.addObject("characters", d);
+		mv.setViewName("intro");
+		return mv;
+	}
+
 	@RequestMapping("delete.do")
 	public ModelAndView delete(@RequestParam("id") Integer id) throws SQLException {
 		ModelAndView mv = new ModelAndView("deleted"); 
@@ -77,25 +98,4 @@ public class CharacterController {
 		mv.setViewName("intro");
 		return mv;
 	}
-	
-	//is used to get to the update page
-	@RequestMapping(path="update.do", params="id")
-	public ModelAndView update(@RequestParam("id") Integer id) {
-		ModelAndView mv = new ModelAndView(); 
-		Characters change = dao.getCharacterById(id);
-		mv.addObject("character", change);
-		mv.setViewName("update");
-		return mv;
-	}
-	//actually makes the update and returns the user to the homepage
-	//issue: it is not displaying the same homepage as we left. No data is presented.
-	@RequestMapping(path="updateCharacter.do", method=RequestMethod.POST)
-	public ModelAndView doUpdate(Characters characters) {
-		ModelAndView mv = new ModelAndView();
-		Characters c = dao.updateCharacter(characters);
-		mv.addObject("characterList", c);
-		mv.setViewName("intro");
-		return mv;
-	}
-
 }

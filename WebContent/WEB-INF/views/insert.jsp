@@ -31,7 +31,7 @@ crossorigin="anonymous">
 		    <option value="love interest">Love interest</option>
 		    <option value="guide">Guide</option>
 		    <option value="helper">Helper</option>
-		</form:select><form:errors path="position"/>		<br>
+		</form:select><form:errors path="role"/>		<br>
 		Backstory: 
 		<form:input path="backstory"/>
 		<form:errors path="backstory"/>	<br>
